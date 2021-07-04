@@ -1,0 +1,2 @@
+<button type="button" class="btn btn-warning btn-xs" onclick="show_modal_add('{{$title}}','{{$url_edit}}')"><i class="fa fa-edit"></i> Edit</button>
+<button type="button" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Hapus</button>
