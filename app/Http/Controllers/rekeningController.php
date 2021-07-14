@@ -18,6 +18,19 @@ class rekeningController extends Controller
         return view('administrator.rekening.index');
     }
 
+    public function NumberAutomatic(){
+        $nomor = rekening::orderBy('id','desc')->first();
+        if (empty($nomor)) {
+            $result = "01";
+        }else{
+            $getString = $nomor['kode'];
+            $getFirst = substr($getString,1,1);
+            $inc = intval($getFirst) + 1;
+            $result =  0 .''. $inc;
+        }
+        return $result;
+     }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -25,7 +38,8 @@ class rekeningController extends Controller
      */
     public function create()
     {
-        return view('administrator.rekening.add');
+        $autoNumber = $this->NumberAutomatic();
+        return view('administrator.rekening.add',compact('autoNumber'));
     }
 
     /**
