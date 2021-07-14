@@ -121,6 +121,8 @@ $(function () {
     }
 
     delete_data = (url,table) =>{
+        console.log(host+url);
+        
       token = $('meta[name="csrf-token"]').attr('content');
       swal({
         title: "Apa Kamu Yakin ?",
@@ -135,7 +137,7 @@ $(function () {
     }).then((result) => {
         if (result.value) {
             $.ajax({
-                url  : url,
+                url  : host+url,
                 type : 'POST',
                 data : {
                     '_method' : 'DELETE',

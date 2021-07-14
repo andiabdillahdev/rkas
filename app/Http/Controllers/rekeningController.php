@@ -23,9 +23,24 @@ class rekeningController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function NumberAutomatic(){
+        $nomor = rekening::orderBy('id','desc')->first();
+        if (empty($nomor)) {
+            $result = "01";
+        }else{
+            $getString = $nomor['kode'];
+            $getFirst = substr($getString,1,1);
+            $inc = intval($getFirst) + 1;
+            $result =  0 .''. $inc;
+        }
+        return $result;
+     }
+
     public function create()
     {
-        return view('administrator.rekening.add');
+        $autoNumber = $this->NumberAutomatic();
+        return view('administrator.rekening.add',compact('autoNumber'));
     }
 
     /**
@@ -39,12 +54,14 @@ class rekeningController extends Controller
         $this->validate($request, [
             'no_rekening'=>'required|numeric',
             'bank'=>'required',
+            'kode'=>'required',
             'atas_nama'=>'required'
         ]);
 
         $data = new rekening();
         $data->no_rekening = $request['no_rekening'];
         $data->bank = $request['bank'];
+        $data->kode = $request['kode'];
         $data->atas_nama = $request['atas_nama'];
         $data->save();
 
@@ -85,12 +102,14 @@ class rekeningController extends Controller
         $this->validate($request, [
             'no_rekening'=>'required|numeric',
             'bank'=>'required',
+            'kode'=>'required',
             'atas_nama'=>'required'
         ]);
 
         $data = rekening::where('id',$id)->first();
         $data->no_rekening = $request['no_rekening'];
         $data->bank = $request['bank'];
+        $data->kode = $request['kode'];
         $data->atas_nama = $request['atas_nama'];
         $data->save();
     }

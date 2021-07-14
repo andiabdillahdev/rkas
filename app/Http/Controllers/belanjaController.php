@@ -141,12 +141,13 @@ class belanjaController extends Controller
     {
         $data = belanja::where('id',$id)->first();
         $mainprogram = $this->get_main_program();
+        $bank = $this->get_rekening_bank();
         $subprogram_all = subprogram::where('id_main',$data->id_main)->get();
         $itemprogram_all = itemprogram::where('id_sub',$data->id_sub)->get();
         $subprogram =  collect($subprogram_all)->pluck('uraian', 'id')->toArray();
         $itemprogram = collect($itemprogram_all)->pluck('uraian', 'id')->toArray();
         // dd($subprogram);
-        return view('administrator.rkas.belanja.edit',compact('data','mainprogram','subprogram','itemprogram'));
+        return view('administrator.rkas.belanja.edit',compact('data','mainprogram','subprogram','itemprogram','bank'));
     }
 
     /**
@@ -216,7 +217,7 @@ class belanjaController extends Controller
         $result = [];
         $data = rekening::all();
         foreach ($data as $key => $value) {
-                $result[ $value['no_rekening']] = $value['bank'].' | '.$value['no_rekening'];
+                $result[ $value['kode']] = $value['kode'].' | '.$value['bank'].' | '.$value['no_rekening'];
         }			
         return $result;
     }
