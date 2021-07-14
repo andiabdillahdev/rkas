@@ -338,10 +338,10 @@ $(document).ready(function () {
       },
       columns: [
           {data : "id"},
+          {data:"kode"},
           { data:"no_rekening"},
           { data:"atas_nama"},
           { data:"bank"},
-          {data:"updated_at"},
           { data: null, sClass:'text-center', responsivePriority: 1},
          
       ],

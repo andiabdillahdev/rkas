@@ -51,7 +51,8 @@
                   <label class="control-label col-md-3 col-sm-3 col-xs-12" for="kode_rekening">Kode Rekening<span class="required">*</span>
                   </label>
                   <div class="col-md-6 col-sm-6 col-xs-12">
-                    <input type="text" id="kode_rekening" required="required" name="kode_rekening" class="form-control col-md-7 col-xs-12" value="{{$data->kode_rekening}}">
+                    <!-- <input type="text" id="kode_rekening" required="required" name="kode_rekening" class="form-control col-md-7 col-xs-12" value="{{$data->kode_rekening}}"> -->
+                    {{ Form::select('kode_rekening', $bank, $data->kode_rekening, ['class' => 'form-control selectpicker', 'data-size' => '7', 'data-live-search' => 'true', 'data-toggle'=>'ajax','id'=>'no_rekening','title'=>'Pilih No Rekening']) }} 
                   </div>
                 </div>
                 <div class="form-group">

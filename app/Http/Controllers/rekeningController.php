@@ -39,12 +39,14 @@ class rekeningController extends Controller
         $this->validate($request, [
             'no_rekening'=>'required|numeric',
             'bank'=>'required',
+            'kode'=>'required',
             'atas_nama'=>'required'
         ]);
 
         $data = new rekening();
         $data->no_rekening = $request['no_rekening'];
         $data->bank = $request['bank'];
+        $data->kode = $request['kode'];
         $data->atas_nama = $request['atas_nama'];
         $data->save();
 
@@ -85,12 +87,14 @@ class rekeningController extends Controller
         $this->validate($request, [
             'no_rekening'=>'required|numeric',
             'bank'=>'required',
+            'kode'=>'required',
             'atas_nama'=>'required'
         ]);
 
         $data = rekening::where('id',$id)->first();
         $data->no_rekening = $request['no_rekening'];
         $data->bank = $request['bank'];
+        $data->kode = $request['kode'];
         $data->atas_nama = $request['atas_nama'];
         $data->save();
     }
