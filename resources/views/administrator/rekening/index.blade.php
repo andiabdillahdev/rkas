@@ -25,10 +25,10 @@
                     <thead>
                         <tr>
                           <th>ID</th>
-                          <th>Kode</th>
                           <th>No Rekening</th>
                           <th>Atas Nama</th>
                           <th>Bank</th>
+                          <th>Di Muat Pada</th>
                           <th>Aksi</th>
                         </tr>
                     </thead>
