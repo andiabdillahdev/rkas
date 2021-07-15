@@ -217,7 +217,7 @@ class belanjaController extends Controller
         $result = [];
         $data = rekening::all();
         foreach ($data as $key => $value) {
-                $result[$value['no_rekening']] = $value['kode'].' | '.$value['bank'].' | '.$value['no_rekening'];
+                $result[$value['kode']] = $value['kode'].' | '.$value['bank'].' | '.$value['no_rekening'];
         }			
         return $result;
     }
