@@ -107,7 +107,7 @@ class itemprogramController extends Controller
     }
 
     public function getall(){
-        $data = itemprogram::all();
+        $data = itemprogram::with(['mainprogram', 'subprogram'])->get();
         return DataTables::of($data)->editColumn('main_program', function ($data) {
             return $data['mainprogram'] ? $data['mainprogram']['kode'] : NULL;
         })->editColumn('sub_program', function ($data) {
