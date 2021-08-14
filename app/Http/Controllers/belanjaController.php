@@ -10,6 +10,7 @@ use App\subprogram;
 use App\itemprogram;
 use App\buktipenggunaandana;
 use App\rekening;
+use DB;
 
 class belanjaController extends Controller
 {
@@ -159,6 +160,7 @@ class belanjaController extends Controller
      */
     public function update(Request $request, $id)
     {
+    
         $this->validate($request, [
             'main_program'=>'required',
             'sub_program'=>'required',
@@ -193,6 +195,33 @@ class belanjaController extends Controller
         $data->triwulan4 = str_replace(',','',$request->triwulan4);
         $data->status = 'Proses';
         $data->save();
+
+       if ($request->file('bukti_sekolah') != null && $request->file('bukti_toko') != null ) {
+        // buktipenggunaandana::whereIn('id_belanja',$id)->delete();
+            foreach($data->bukti_penggunaan_dana as $key) {
+                $key->delete();
+            }
+        for ($i=0; $i < count($request->keterangan) ; $i++) { 
+            $file_bukti_sekolah = $request->file('bukti_sekolah')[$i];  
+            $file_bukti_toko = $request->file('bukti_toko')[$i];
+            $filename_bukti_sekolah = $file_bukti_sekolah->getClientOriginalName();
+            $filename_bukti_toko = $file_bukti_toko->getClientOriginalName();
+            $path_file_sekolah = 'struk/sekolah';
+            $path_file_toko = 'struk/toko';
+            $file_bukti_sekolah->move($path_file_sekolah,$filename_bukti_sekolah);
+            $file_bukti_toko->move($path_file_toko,$filename_bukti_toko);
+
+            $struk = new buktipenggunaandana();
+            $struk->id_belanja = $id;
+            $struk->keterangan = $request['keterangan'][$i];
+            $struk->bukti_sekolah = $filename_bukti_sekolah;
+            $struk->bukti_toko = $filename_bukti_toko;
+            $struk->save();
+        }
+       }else{
+        return 'cekk1';
+       }
+
     }
 
     /**

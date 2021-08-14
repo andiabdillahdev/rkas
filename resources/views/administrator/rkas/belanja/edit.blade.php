@@ -194,7 +194,7 @@
 
                   <div class="form-group">
                     <div class="row text-center">
-                    <button type="button" onclick="post_data_page('komponen_data/belanja/update/{{$data->id}}','Data Belanja','form_belanja_edit','Update','tb_belanja','komponen_data/belanja')" class="btn btn-success">Submit</button>
+                    <button type="button" onclick="post_data_form_data('komponen_data/belanja/update/{{$data->id}}','Data Belanja','form_belanja_edit','Update','tb_belanja','komponen_data/belanja')" class="btn btn-success">Submit</button>
                     <a class="btn btn-danger" role="button" href="{{route('belanja')}}">Cancel</a>
                      
                     </div>
