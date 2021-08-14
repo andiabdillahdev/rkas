@@ -184,7 +184,7 @@ $(document).ready(function () {
           width: '150px',
           sClass: 'text-center',
           render : function (data) {
-            return `<a role="button" onclick="show_modal_add('Detail Pegawai','siswa/show/${data.id}')" class="btn btn-info btn-xs"><i class="fa fa-eye"></i> Detail</a><a role="button" class="btn btn-warning btn-xs" onclick="show_modal_add('Update Pegawai','/siswa/edit/${data.id}')" ><i class="fa fa-edit"></i> Edit</a><a role="button" onclick="delete_data('/siswa/destroy/${data.id}','tbl_siswa')" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Hapus</a>`;
+            return `<a role="button" onclick="show_modal_add('Detail Siswa','siswa/show/${data.id}')" class="btn btn-info btn-xs"><i class="fa fa-eye"></i> Detail</a><a role="button" class="btn btn-warning btn-xs" onclick="show_modal_add('Update Siswa','/siswa/edit/${data.id}')" ><i class="fa fa-edit"></i> Edit</a><a role="button" onclick="delete_data('/siswa/destroy/${data.id}','tbl_siswa')" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Hapus</a>`;
           }
         },
       ],

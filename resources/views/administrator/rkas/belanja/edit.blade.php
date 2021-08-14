@@ -6,7 +6,7 @@
     <div class="">
       <div class="page-title">
         <div class="title_left">
-          <h3>Update Data Belanja</h3>
+          <h3>Kelola Data Belanja</h3>
         </div>
       </div>
 
@@ -20,10 +20,20 @@
               <div class="clearfix"></div>
             </div>
             <div class="x_content">
-              <br />
+
               <form id="form_belanja_edit" class="form-horizontal form-label-left">
 
-                <div class="form-group">
+              <div class="" role="tabpanel" data-example-id="togglable-tabs">
+                <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+                  <li role="presentation" class="active"><a href="#tab_content1" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">Penggunaan Dana</a>
+                  </li>
+                  <li role="presentation" class=""><a href="#tab_content2" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">Bukti Penggunaan Dana</a>
+                  </li>
+                </ul>
+                <div id="myTabContent" class="tab-content">
+                  <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="home-tab">
+
+                  <div class="form-group">
                   <label class="control-label col-md-3 col-sm-3 col-xs-12" for="main_program">Main Program<span class="required">*</span>
                   </label>
                   <div class="col-md-6 col-sm-6 col-xs-12">
@@ -127,15 +137,74 @@
                 </div>
   
                 <div class="ln_solid"></div>
-                <div class="form-group">
-                  <div class="row text-center">
+
+                  </div>
+                  <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="profile-tab">
+                  
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th>#</th>
+                          <th>Item</th>
+                          <th>Bukti Sekolah</th>
+                          <th>Bukti Toko</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <th scope="row"></th>
+                          <td>
+                            Nota Penerimaan Barang
+                            <input type="hidden" name="keterangan[]" value="Nota Penerimaan Barang">
+                          </td>
+                          <td><input type="file" name="bukti_sekolah[]" class="form-control"></td>
+                          <td><input type="file" name="bukti_toko[]" class="form-control"></td>
+                        </tr>
+                        <tr>
+                          <th scope="row"></th>
+                          <td>
+                            Nota Pesanan Barang
+                            <input type="hidden" name="keterangan[]" value="Nota Pesanan Barang">
+                          </td>
+                          <td><input type="file" name="bukti_sekolah[]" class="form-control"></td>
+                          <td><input type="file" name="bukti_toko[]" class="form-control"></td>
+                        </tr>
+                        <tr>
+                          <th scope="row"></th>
+                          <td>
+                            Kwitansi Penerimaan
+                            <input type="hidden" name="keterangan[]" value="Kwitansi Penerimaan">
+                          </td>
+                          <td><input type="file" name="bukti_sekolah[]" class="form-control"></td>
+                          <td><input type="file" name="bukti_toko[]" class="form-control"></td>
+                        </tr>
+                        <tr>
+                          <th scope="row"></th>
+                          <td>
+                            Kwintansi Pembayaran
+                            <input type="hidden" name="keterangan[]" value="Kwintansi Pembayaran">
+                          </td>
+                          <td><input type="file" name="bukti_sekolah[]" class="form-control"></td>
+                          <td><input type="file" name="bukti_toko[]" class="form-control"></td>
+                        </tr>
+                      </tbody>
+                    </table>
+
+                  </div>
+
+                  <div class="form-group">
+                    <div class="row text-center">
                     <button type="button" onclick="post_data_page('komponen_data/belanja/update/{{$data->id}}','Data Belanja','form_belanja_edit','Update','tb_belanja','komponen_data/belanja')" class="btn btn-success">Submit</button>
                     <a class="btn btn-danger" role="button" href="{{route('belanja')}}">Cancel</a>
-                   
+                     
+                    </div>
                   </div>
-                </div>
 
-              </form>
+                </div>
+              </div>
+
+            </form>
+
             </div>
           </div>
         </div>
